@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Riwayat Obat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Beranda</a>
+        <a href="/tambah">Tambah Obat</a>
+        <a href="/riwayat">Riwayat</a>
+        <a href="/tentang">Tentang</a>
+        <a href="/kontak">Kontak</a>
+    </nav>
+    <h1>Riwayat Obat yang Telah Diminum</h1>
+    <ul>
+        {% for obat in daftar_obat %}
+        <li>{{ obat.nama }} - {{ obat.waktu }}</li>
+        {% else %}
+        <p>Belum ada obat yang diminum.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

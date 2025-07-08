@@ -1,0 +1,43 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pengingat Obat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <nav>
+        <a href="/">Beranda</a>
+        <a href="/tambah">Tambah Obat</a>
+        <a href="/riwayat">Riwayat</a>
+        <a href="/tentang">Tentang</a>
+        <a href="/kontak">Kontak</a>
+    </nav>
+
+    <h1>Pengingat Minum Obat</h1>
+
+    <form action="/tambah" method="POST">
+        <input type="text" name="nama" placeholder="Nama Obat" required>
+        <input type="time" name="waktu" required>
+        <button type="submit">Tambah</button>
+    </form>
+
+    <ul>
+        {% for obat in daftar_obat %}
+        <li>
+            <span class="{{ 'selesai' if obat.status else '' }}">{{ obat.nama }} - {{ obat.waktu }}</span>
+            <button onclick="toggleStatus('{{ obat.id }}')">
+                {{ '✓' if obat.status else '✗' }}
+            </button>
+            <form action="/hapus/{{ obat.id }}" method="POST" style="display:inline;">
+                <button type="submit">Hapus</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

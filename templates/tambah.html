@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Obat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Beranda</a>
+        <a href="/tambah">Tambah Obat</a>
+        <a href="/riwayat">Riwayat</a>
+        <a href="/tentang">Tentang</a>
+        <a href="/kontak">Kontak</a>
+    </nav>
+    <h1>Tambah Pengingat Obat</h1>
+    <form action="/tambah" method="POST">
+        <input type="text" name="nama" placeholder="Nama Obat" required>
+        <input type="time" name="waktu" required>
+        <button type="submit">Simpan</button>
+    </form>
+</body>
+</html>
